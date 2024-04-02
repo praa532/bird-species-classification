@@ -5,30 +5,26 @@ from os import listdir
 from keras.utils import np_utils
 
 species = [
-    "001.Black_footed_Albatross",
-"002.Laysan_Albatross",
-"003.Sooty_Albatross",
-"004.Groove_billed_Ani",
-"005.Crested_Auklet",
-"006.Least_Auklet",
-"007.Parakeet_Auklet",
-"008.Rhinoceros_Auklet",
-"009.Brewer_Blackbird",
-"010.Red_winged_Blackbird",
-"011.Rusty_Blackbird",
-"012.Yellow_headed_Blackbird",
-"013.Bobolink",
-"014.Indigo_Bunting",
-"015.Lazuli_Bunting",
-"016.Painted_Bunting",
-"017.Cardinal",
-"018.Spotted_Catbird",
-"019.Gray_Catbird",
-"020.Yellow_breasted_Chat",
+    "blasti",
+    "bonegl",
+    "brhkyt",
+    "cbrtsh",
+    "cmnmyn",
+    "gretit",
+    "hilpig",
+    "himbul",
+    "himgri",
+    "hsparo",
+    "indvul",
+    "jglowl",
+    "lbicrw",
+    "mgprob",
+    "rebimg",
+    "wcrsrt",
 ]
 
-datapath = "C:\Project"
-N_CLASSES = 20  # Number of classes
+datapath = "./"
+N_CLASSES = 16  # Number of classes
 
 
 def gen_data():
@@ -45,8 +41,8 @@ def gen_data():
     for bird_specie in species:
 
         # Samples Location
-        train_data = join(datapath, "Train data/" + bird_specie)
-        val_data = join(datapath, "Validation/" + bird_specie)
+        train_data = join(datapath, "train/" + bird_specie)
+        val_data = join(datapath, "valid/" + bird_specie)
         test_data = join(datapath, "test/" + bird_specie)
 
         # Samples Files

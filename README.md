@@ -2,7 +2,11 @@
 
 Inter species classification
 
-This is an implementation of bird species classification on Python 3 and Keras with Tensorflow backend. The architecture consists of Mask R-CNN and ImageNet models end-to-end. ImageNet models used are Inception V3 and Inception ResNet V2.
+**Paper accepted at 11th ICVGIP'18 Conference, WCVA Workshop :grimacing:**
+
+# :relaxed:[***CHALLENGE WINNERS***](http://www.iiitdmj.ac.in/CVIP-2018/BPA.html):relaxed:
+
+This is an implementation of bird species classification challenge hosted by IIT Mandi in [ICCVIP Conference'18](http://www.iiitdmj.ac.in/CVIP-2018/index.html) on Python 3 and Keras with Tensorflow backend. The architecture consists of Mask R-CNN and ImageNet models end-to-end. ImageNet models used are Inception V3 and Inception ResNet V2.
 
 ![main_image](https://user-images.githubusercontent.com/22872200/45708132-49ab7380-bb9e-11e8-8bd5-8beb9f077d90.jpg)
 
@@ -48,6 +52,24 @@ To help running the model, end to end a docx has been added in case much informa
   * It helped to improve the accuracy by 2% from 49 to 51.
   
 * After applying Mask R-CNN for both, using confusion matrix Inception V3 performs better in some classes than Inception ResNet V2. Using ensembling, by taking the prediction vector ofboth the models compared them and then finally assign the class to the image whosoever has the highest prediction for certain species. This helped to improve the accuracy by almost 5% from 51 to around 56%. Tables are dicussed below.
+
+## Citation
+If you use this repository, please use this bibtex to cite the paper:
+ ```
+@InProceedings{10.1007/978-981-15-1387-9_3,
+author="Kumar, Akash
+and Das, Sourya Dipta",
+editor="Arora, Chetan
+and Mitra, Kaushik",
+title="Bird Species Classification Using Transfer Learning with Multistage Training",
+booktitle="Computer Vision Applications",
+year="2019",
+publisher="Springer Singapore",
+address="Singapore",
+pages="28--38",
+isbn="978-981-15-1387-9"
+} 
+```
 
 Some important sub-parts are discussed below:
 ## Dataset
@@ -109,3 +131,11 @@ The dataset is uploaded on Kaggle and the link is shared as follow:
 Description of all the codes have been shared in this [PDF](https://github.com/AKASH2907/bird-species-classification/blob/master/Codes_info.pdf)
 
 Medium Post: [Bird Species Classification in High Resolution Images](https://medium.com/@akash29/bird-species-classification-in-high-resolution-images-28a5885f94f2)
+
+Paper uploaded on arXiv: prePrint Version: **[Bird Species Classification with Transfer Learning using Multistage Training](https://arxiv.org/abs/1810.04250)**
+## References
+[1] Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jonathon Shlens, Zbigniew Wojna, "[
+Rethinking the Inception Architecture for Computer Vision](https://arxiv.org/abs/1512.00567)" arXiv preprint arXiv:1512.00567. <br />
+[2] Christian Szegedy, Sergey Ioffe, Vincent Vanhoucke, Alex Alemi, "[Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning](https://arxiv.org/abs/1602.07261)" arXiv preprint arXiv:1602.07261. <br />
+[3] Kaiming He, Georgia Gkioxari, Piotr Dollár, Ross Girshick, "[Mask R-CNN](https://arxiv.org/abs/1703.06870)" arXiv preprint arXiv:1703.06870. <br />
+[4] Mask R-CNN Github repo. "[Link](https://github.com/matterport/Mask_RCNN)" <br />

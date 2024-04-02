@@ -10,9 +10,9 @@ from keras.layers import (
 from keras.optimizers import Adam
 from keras.models import Model
 from keras.callbacks import LearningRateScheduler
-from keras.applications.inception_resnet_v2 import InceptionResNetV2
 from keras import backend as K
 from keras.utils.generic_utils import get_custom_objects
+from keras.applications.inception_v3 import InceptionV3
 
 
 BATCH_SIZE = 32
@@ -21,7 +21,6 @@ N_CLASSES = 16
 EPOCHS = 7
 
 
-# Swish Activation Function
 def swish(x):
     return K.sigmoid(x) * x
 
@@ -83,15 +82,14 @@ def f1(y_true, y_pred):
     return 2 * ((precision * recall) / (precision + recall + K.epsilon()))
 
 
-# Inception_ResNet_V2 model define
-def build_inception_resnet_V2(
+# Inecption_V3 model define
+def build_inceptionV3(
     img_shape=(416, 416, 3),
     n_classes=16,
     l2_reg=0.0,
     load_pretrained=True,
     freeze_layers_from="base_model",
 ):
-
     # Decide if load pretrained weights from imagenet
     if load_pretrained:
         weights = "imagenet"
@@ -99,7 +97,7 @@ def build_inception_resnet_V2(
         weights = None
 
     # Get base model
-    base_model = InceptionResNetV2(
+    base_model = InceptionV3(
         include_top=False,
         weights=weights,
         input_tensor=None,
@@ -124,7 +122,7 @@ def build_inception_resnet_V2(
         kernel_initializer="he_uniform",
     )(x)
 
-    # This is the model that will  be trained
+    # This is the model to be trained
     model = Model(inputs=base_model.input, outputs=predictions)
 
     # Freeze some layers
@@ -165,7 +163,7 @@ if __name__ == "__main__":
     # x_valid          = np.load('X_valid.npy')
     # y_valid          = np.load('Y_valid.npy')
 
-    # Loading Original Images for Testing rsized to 416x416
+    # Loading Original Images for Testing resized to 416x416
     x_test = np.load("X_test.npy")
     y_test = np.load("Y_test_categorical.npy")
 
@@ -175,23 +173,23 @@ if __name__ == "__main__":
     lrate = LearningRateScheduler(step_decay)
 
     # Loading Model
-    model = build_inception_resnet_V2()
+    model = build_inceptionV3()
 
     # Loading Trained weights
-    model.load_weights("inception_resnet_v2_images+crops.h5")
+    model.load_weights("inception_v3_crops+images.h5")
 
-    # Model Fitting with 10% of the images used for Validation purpose
+    # Model Fitting
     # history = model.fit(x_train_original, y_train_original,
     #       batch_size=BATCH_SIZE,
     #       epochs=EPOCHS,
     #       verbose= 1,
     #     # steps_per_epoch=x_train.shape[0]//BATCH_SIZE,
     #     callbacks = [lrate],
-    #     validation_split=VALIDATION_SPLIT
+    #     validation_data=(x_valid, y_valid)
     #     )
 
-    # Save Model Weights
-    # model.save_weights('inception_resnet_crops.h5')
+    # Save model weights
+    # model.save_weights('inception_v3_crops+images.h5')
 
     # Calculate score over test data
     score = model.evaluate(x_test, y_test, verbose=1, batch_size=BATCH_SIZE)
