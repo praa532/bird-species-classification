@@ -2,11 +2,7 @@
 
 Inter species classification
 
-**Paper accepted at 11th ICVGIP'18 Conference, WCVA Workshop :grimacing:**
-
-# :relaxed:[***CHALLENGE WINNERS***](http://www.iiitdmj.ac.in/CVIP-2018/BPA.html):relaxed:
-
-This is an implementation of bird species classification challenge hosted by IIT Mandi in [ICCVIP Conference'18](http://www.iiitdmj.ac.in/CVIP-2018/index.html) on Python 3 and Keras with Tensorflow backend. The architecture consists of Mask R-CNN and ImageNet models end-to-end. ImageNet models used are Inception V3 and Inception ResNet V2.
+This is an implementation of bird species classification on Python 3 and Keras with Tensorflow backend. The architecture consists of Mask R-CNN and ImageNet models end-to-end. ImageNet models used are Inception V3 and Inception ResNet V2.
 
 ![main_image](https://user-images.githubusercontent.com/22872200/45708132-49ab7380-bb9e-11e8-8bd5-8beb9f077d90.jpg)
 
@@ -53,27 +49,9 @@ To help running the model, end to end a docx has been added in case much informa
   
 * After applying Mask R-CNN for both, using confusion matrix Inception V3 performs better in some classes than Inception ResNet V2. Using ensembling, by taking the prediction vector ofboth the models compared them and then finally assign the class to the image whosoever has the highest prediction for certain species. This helped to improve the accuracy by almost 5% from 51 to around 56%. Tables are dicussed below.
 
-## Citation
-If you use this repository, please use this bibtex to cite the paper:
- ```
-@InProceedings{10.1007/978-981-15-1387-9_3,
-author="Kumar, Akash
-and Das, Sourya Dipta",
-editor="Arora, Chetan
-and Mitra, Kaushik",
-title="Bird Species Classification Using Transfer Learning with Multistage Training",
-booktitle="Computer Vision Applications",
-year="2019",
-publisher="Springer Singapore",
-address="Singapore",
-pages="28--38",
-isbn="978-981-15-1387-9"
-} 
-```
-
 Some important sub-parts are discussed below:
 ## Dataset
-In this repo, I have used the dataset fom the [ICCVIP'18](http://www.iiitdmj.ac.in/CVIP-2018/challenges.html) Bird Species Classification Challenge. Training dataset contains 150 images and test dataset contains 158 images with 1 image corrupted. There are total 16 species of birds to be classified. The resolution of the images lies in between 800x600 to 6000x4000.
+In this repo, I have used the dataset fom the Kaggle BIRDS 525 SPECIES- IMAGE CLASSIFICATION ([https://www.kaggle.com/datasets/gpiosenka/100-bird-species](https://www.kaggle.com/datasets/gpiosenka/100-bird-species)) Bird Species Classification Challenge. Training dataset contains 150 images and test dataset contains 158 images with 1 image corrupted. There are total 16 species of birds to be classified. The resolution of the images lies in between 800x600 to 6000x4000.
 ## Data Augmentation
 Data Augmentation has been done using [imgaug](https://imgaug.readthedocs.io/en/latest/source/augmenters.html#affine).Table for data Augmentation done for different species is shared in [data_augmentation folder](https://github.com/AKASH2907/bird-species-classification/tree/master/data_augmentation).
 
@@ -123,19 +101,3 @@ Final Confusion Matrix:
 ![final_confusion_matrix](https://user-images.githubusercontent.com/22872200/45716831-b4b47480-bbb5-11e8-9d76-e576dfb8cc11.jpeg)
 
 Hope it helps!!! If youmake any progress on the dataset or face any problems, please let me know. :relaxed:
-
-## Extras
-The dataset is uploaded on Kaggle and the link is shared as follow:
-[Dataset](https://www.kaggle.com/akash2907/bird-species-classification) <br />
-
-Description of all the codes have been shared in this [PDF](https://github.com/AKASH2907/bird-species-classification/blob/master/Codes_info.pdf)
-
-Medium Post: [Bird Species Classification in High Resolution Images](https://medium.com/@akash29/bird-species-classification-in-high-resolution-images-28a5885f94f2)
-
-Paper uploaded on arXiv: prePrint Version: **[Bird Species Classification with Transfer Learning using Multistage Training](https://arxiv.org/abs/1810.04250)**
-## References
-[1] Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jonathon Shlens, Zbigniew Wojna, "[
-Rethinking the Inception Architecture for Computer Vision](https://arxiv.org/abs/1512.00567)" arXiv preprint arXiv:1512.00567. <br />
-[2] Christian Szegedy, Sergey Ioffe, Vincent Vanhoucke, Alex Alemi, "[Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning](https://arxiv.org/abs/1602.07261)" arXiv preprint arXiv:1602.07261. <br />
-[3] Kaiming He, Georgia Gkioxari, Piotr Dollár, Ross Girshick, "[Mask R-CNN](https://arxiv.org/abs/1703.06870)" arXiv preprint arXiv:1703.06870. <br />
-[4] Mask R-CNN Github repo. "[Link](https://github.com/matterport/Mask_RCNN)" <br />
